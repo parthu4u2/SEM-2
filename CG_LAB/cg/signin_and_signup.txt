@@ -1,0 +1,85 @@
+Step-by-Step Guide: Sign In & Sign Up in Flash 8 (ActionScript 2.0)
+
+
+Step 1: Open Macromedia Flash 8
+Launch Macromedia Flash 8.
+
+Create a new Flash document (File → New → Flash Document).
+
+Step 2: Create the Sign Up Interface
+Text Fields:
+
+Select the Text Tool (T) and create two input text fields:
+
+Username: Set instance name → signup_user_txt
+
+Password: Set instance name → signup_pass_txt
+
+In the Properties Panel, change text type to Password (so it shows **** instead of the actual password).
+
+Buttons:
+
+Draw a Sign Up Button (using the Rectangle Tool).
+
+Convert it to a Button Symbol (F8 → Button).
+
+Set instance name → signup_btn.
+
+Step 3: Create the Sign In Interface
+Text Fields:
+
+Username: Instance name → signin_user_txt
+
+Password: Instance name → signin_pass_txt (set as Password text type).
+
+Buttons:
+
+Draw a Sign In Button and set its instance name → signin_btn.
+
+Step 4: Store and Verify User Data (Using SharedObject)
+Since Flash doesn’t have a built-in database, we use SharedObject (Flash’s local storage) to store user data.
+
+ActionScript Code (Frame 1)
+Click Frame 1, open Actions Panel (Window → Actions), and paste this:
+
+actionscript
+
+// Create SharedObject to store user data locally
+var userData:SharedObject = SharedObject.getLocal("user_data");
+
+// Sign Up Function
+signup_btn.onRelease = function() {
+    var username = signup_user_txt.text;
+    var password = signup_pass_txt.text;
+
+    if (username != "" && password != "") {
+        userData.data.username = username;
+        userData.data.password = password;
+        userData.flush(); // Save data permanently
+        trace("User registered: " + username);
+        signup_user_txt.text = "";
+        signup_pass_txt.text = "";
+    } else {
+        trace("Please enter username and password!");
+    }
+};
+
+// Sign In Function
+signin_btn.onRelease = function() {
+    var username = signin_user_txt.text;
+    var password = signin_pass_txt.text;
+
+    if (username == userData.data.username && password == userData.data.password) {
+        trace("Login Successful!");
+    } else {
+        trace("Invalid Username or Password!");
+    }
+};
+
+Step 5: Test Your Sign In & Sign Up System
+Press Ctrl + Enter (Control → Test Movie).
+
+Sign Up with a username & password → Data is stored locally.
+
+Sign In with the same credentials → It will authenticate and display “Login Successful!”.
+

@@ -1,0 +1,89 @@
+Step-by-Step Guide: Creating and Connecting Three Scenes in Flash 8
+
+Step 1: Create a New Flash Document
+Open Macromedia Flash 8.
+
+Create a new Flash file (File → New → Flash Document).
+
+Step 2: Add Three Scenes
+Go to Window → Other Panels → Scene (to open the Scene panel).
+
+You’ll see Scene 1 by default.
+
+Click the “+” (Add Scene) button twice to create two more scenes.
+
+Rename the scenes:
+
+Scene 1 → "Home"
+
+Scene 2 → "About"
+
+Scene 3 → "Contact"
+
+To rename a scene, double-click its name in the Scene panel.
+
+Step 3: Design Each Scene
+Go to Scene 1 ("Home"):
+
+Add a title: "Welcome to Home Page".
+
+Create a button → Convert it to a Button Symbol (F8 → Button).
+
+Set the instance name → next_btn.
+
+Go to Scene 2 ("About"):
+
+Add text: "This is the About Page".
+
+Add a Next Button (instance name: next_btn).
+
+Add a Back Button (instance name: back_btn).
+
+Go to Scene 3 ("Contact"):
+
+Add text: "This is the Contact Page".
+
+Add a Back Button (instance name: back_btn).
+
+Step 4: Add ActionScript 2.0 Code for Scene Navigation
+Click on Frame 1 of Scene 1.
+
+Open the Actions Panel (Window → Actions).
+
+Add the following code:
+
+actionscript
+
+// Scene 1: Home → Go to About Page
+next_btn.onRelease = function() {
+    gotoAndPlay("About", 1);
+};.
+
+Now, go to Scene 2, select Frame 1, and enter this code:
+
+actionscript
+
+// Scene 2: About → Go to Contact Page
+next_btn.onRelease = function() {
+    gotoAndPlay("Contact", 1);
+};
+
+// Back to Home Scene
+back_btn.onRelease = function() {
+    gotoAndPlay("Home", 1);
+};
+
+Finally, go to Scene 3, select Frame 1, and add:
+
+actionscript
+
+// Scene 3: Contact → Back to About Page
+back_btn.onRelease = function() {
+    gotoAndPlay("About", 1);
+};
+
+Step 5: Test Your Scene Navigation
+Press Ctrl + Enter (Control → Test Movie).
+
+Click the Next and Back buttons to navigate between the three scenes.
+

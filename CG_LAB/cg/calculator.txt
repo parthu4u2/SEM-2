@@ -1,0 +1,85 @@
+Steps to Create a Simple Calculator in Macromedia Flash
+
+
+Step 1: Open Macromedia Flash
+Launch Macromedia Flash 8 (or an older version).
+
+Create a new Flash document (File → New → Flash Document).
+
+Step 2: Set Up the Stage
+Click on the Text Tool (T) and set it to Input Text (Properties Panel → Text Type → Input Text).
+
+Create four Input Text fields and name them:
+
+num1_txt (For first number)
+
+num2_txt (For second number)
+
+result_txt (For displaying the result)
+
+Create four Buttons for operations: Add, Subtract, Multiply, Divide.
+
+Select the Rectangle Tool, draw buttons, and add text labels (+, −, ×, ÷).
+
+Step 3: Assign Instance Names
+Click each button and give them instance names in the Properties Panel:
+
+add_btn
+
+sub_btn
+
+mul_btn
+
+div_btn
+
+Step 4: Write ActionScript Code
+Click on Frame 1 of the timeline.
+
+Open Actions Panel (Window → Actions) and add the following ActionScript 2.0 code:
+
+actionscript
+
+// Function to perform addition
+add_btn.onRelease = function() {
+    var num1 = Number(num1_txt.text);
+    var num2 = Number(num2_txt.text);
+    result_txt.text = num1 + num2;
+};
+
+// Function to perform subtraction
+sub_btn.onRelease = function() {
+    var num1 = Number(num1_txt.text);
+    var num2 = Number(num2_txt.text);
+    result_txt.text = num1 - num2;
+};
+
+// Function to perform multiplication
+mul_btn.onRelease = function() {
+    var num1 = Number(num1_txt.text);
+    var num2 = Number(num2_txt.text);
+    result_txt.text = num1 * num2;
+};
+
+// Function to perform division
+div_btn.onRelease = function() {
+    var num1 = Number(num1_txt.text);
+    var num2 = Number(num2_txt.text);
+    if (num2 != 0) {
+        result_txt.text = num1 / num2;
+    } else {
+        result_txt.text = "Error!";
+    }
+};
+
+
+Step 5: Test the Calculator
+Press Ctrl + Enter (or go to Control → Test Movie).
+
+Enter two numbers and click an operation button to see the result.
+
+Step 6: Export the SWF File
+Go to File → Publish Settings.
+
+Choose SWF and HTML and click Publish.
+
+Your calculator is now ready!
